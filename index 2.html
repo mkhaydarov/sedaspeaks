@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>English for Seda</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <div class="logo">🌸</div>
+        <div>
+          <h1>English for Seda</h1>
+          <p class="subtitle">Учись английскому удобно — в своём темпе</p>
+        </div>
+      </div>
+      <nav class="main-nav" aria-label="Главная навигация">
+        <button class="nav-btn" data-view="home">Главная</button>
+        <button class="nav-btn" data-view="lessons">Уроки</button>
+        <button class="nav-btn" data-view="vocab">Словарь</button>
+        <button class="nav-btn" data-view="practice">Практика</button>
+        <button class="nav-btn" data-view="profile">Профиль</button>
+      </nav>
+      <div class="header-controls">
+        <button id="theme-toggle" class="outline">Тема</button>
+        <button id="lang-toggle" class="outline">EN</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- HOME -->
+    <section id="view-home" class="view active" aria-labelledby="home-title">
+      <div class="hero">
+        <div>
+          <h2 id="home-title">Добро пожаловать, Seda!</h2>
+          <p>Этот сайт создан специально для тебя: короткие уроки, удобный словарь и задания для тренировки английского.</p>
+          <div class="cta-row">
+            <button class="primary" data-view="lessons">Начать урок</button>
+            <button class="outline" data-view="vocab">Открыть словарь</button>
+          </div>
+        </div>
+        <div class="hero-card">
+          <h3>Текущий прогресс</h3>
+          <div class="progress-wrap" aria-hidden="false">
+            <div id="progress-bar" class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width:0%">0%</div>
+          </div>
+          <p class="muted small">Здесь отображается прогресс пройденных уроков</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- LESSONS -->
+    <section id="view-lessons" class="view" aria-labelledby="lessons-title">
+      <div class="page-head">
+        <h2 id="lessons-title">Уроки</h2>
+        <p class="muted">Короткие тематические уроки — прочитать, послушать, выполнить задание.</p>
+      </div>
+      <div id="lessons-list" class="card-grid"></div>
+
+      <div id="lesson-detail" class="lesson-detail hidden" aria-live="polite">
+        <button class="back-link" id="back-to-lessons">← Назад к урокам</button>
+        <h3 id="lesson-title"></h3>
+        <p id="lesson-desc" class="muted"></p>
+        <article class="lesson-content" id="lesson-content"></article>
+        <div class="lesson-actions">
+          <button id="play-lesson" class="primary">🔊 Прослушать</button>
+          <button id="mark-done" class="outline">Отметить пройденным</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- VOCABULARY -->
+    <section id="view-vocab" class="view" aria-labelledby="vocab-title">
+      <div class="page-head">
+        <h2 id="vocab-title">Словарь</h2>
+        <p class="muted">Слова, которые можно слушать и добавлять в избранное.</p>
+      </div>
+      <div class="vocab-controls">
+        <input id="vocab-search" type="search" placeholder="Поиск слова..." aria-label="Поиск слова">
+        <button id="add-word" class="outline">Добавить слово</button>
+      </div>
+      <ul id="vocab-list" class="vocab-list"></ul>
+      <div id="add-word-box" class="modal hidden" role="dialog" aria-modal="true">
+        <div class="modal-content">
+          <h3>Добавить слово</h3>
+          <label>Слово (EN)<input id="new-word-en" type="text"></label>
+          <label>Перевод (RU)<input id="new-word-ru" type="text"></label>
+          <div class="modal-actions">
+            <button id="save-word" class="primary">Сохранить</button>
+            <button id="cancel-word" class="outline">Отмена</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRACTICE -->
+    <section id="view-practice" class="view" aria-labelledby="practice-title">
+      <div class="page-head">
+        <h2 id="practice-title">Практика</h2>
+        <p class="muted">Тренировки произношения и тесты.</p>
+      </div>
+      <div class="practice-cards card-grid">
+        <div class="card">
+          <h4>Произнеси слово</h4>
+          <button id="practice-play" class="primary">🔊 Спросить слово</button>
+          <button id="practice-start-rec" class="outline">🎤 Попробовать сказать</button>
+          <p id="rec-result" class="muted small"></p>
+        </div>
+        <div class="card">
+          <h4>Мини-тест</h4>
+          <button id="start-mini-quiz" class="primary">Начать тест</button>
+        </div>
+      </div>
+      <div id="mini-quiz-box" class="modal hidden" role="dialog" aria-modal="true">
+        <div class="modal-content">
+          <h3>Мини-тест</h3>
+          <div id="mini-quiz-area"></div>
+          <div class="modal-actions">
+            <button id="submit-mini-quiz" class="primary">Проверить</button>
+            <button id="close-mini-quiz" class="outline">Закрыть</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROFILE -->
+    <section id="view-profile" class="view" aria-labelledby="profile-title">
+      <div class="page-head">
+        <h2 id="profile-title">Профиль</h2>
+        <p class="muted">Настройки и персональные данные (локально).</p>
+      </div>
+      <form id="profile-form" class="card">
+        <label>Имя:
+          <input id="profile-name" type="text" placeholder="Seda">
+        </label>
+        <label>Цель:
+          <input id="profile-goal" type="text" placeholder="Например: говорить на B1">
+        </label>
+        <div class="form-actions">
+          <button type="button" id="save-profile" class="primary">Сохранить</button>
+          <button type="button" id="clear-data" class="outline">Сбросить прогресс</button>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>Создан специально для Seda 🌸 Все данные сохраняются локально в браузере.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

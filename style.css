@@ -1,0 +1,133 @@
+/* CSS Document */
+:root{
+  --bg:#f7fbff;
+  --card:#ffffff;
+  --accent:#4f46e5;
+  --muted:#6b7280;
+  --glass: rgba(255,255,255,0.6);
+  --radius:12px;
+  --shadow: 0 6px 20px rgba(16,24,40,0.08);
+  font-family: 'Inter', system-ui, Arial, sans-serif;
+  color-scheme: light;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  background: linear-gradient(180deg,#eef2ff 0%, #ffffff 100%);
+  color:#0f172a;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  line-height:1.45;
+}
+
+.container{
+  width: min(1100px, 94%);
+  margin: 0 auto;
+  padding: 24px 0;
+}
+
+/* Header */
+.site-header{
+  background: linear-gradient(90deg, rgba(79,70,229,0.08), rgba(99,102,241,0.03));
+  border-bottom: 1px solid rgba(15,23,42,0.04);
+  position:sticky;
+  top:0;
+  z-index:50;
+}
+.header-inner{display:flex;align-items:center;justify-content:space-between;padding:18px 0}
+.brand{display:flex;gap:12px;align-items:center}
+.logo{width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#60a5fa);display:flex;align-items:center;justify-content:center;color:white;font-size:22px;box-shadow:var(--shadow)}
+.brand h1{margin:0;font-size:18px}
+.subtitle{margin:0;font-size:13px;color:var(--muted)}
+
+/* Nav */
+.main-nav{display:flex;gap:8px}
+.nav-btn{background:transparent;border:none;padding:10px 14px;border-radius:10px;cursor:pointer;font-weight:600;color:var(--muted)}
+.nav-btn:hover{background:rgba(15,23,42,0.03);color:var(--accent)}
+
+/* Hero */
+.hero{display:flex;gap:20px;align-items:stretch;flex-wrap:wrap}
+.hero > div{flex:1 1 320px}
+.hero-card{
+  background:var(--card);
+  border-radius:var(--radius);
+  padding:18px;
+  box-shadow:var(--shadow);
+  min-width:260px;
+}
+
+/* Buttons */
+button{font:inherit}
+.primary{
+  background:linear-gradient(90deg,var(--accent),#60a5fa);
+  border:none;color:white;padding:10px 14px;border-radius:10px;cursor:pointer;font-weight:600;
+}
+.outline{
+  background:transparent;border:1px solid rgba(15,23,42,0.06);padding:10px 14px;border-radius:10px;cursor:pointer;color:var(--muted)
+}
+
+/* Progress */
+.progress-wrap{background:#eef2ff;border-radius:999px;padding:6px;margin:12px 0}
+.progress-bar{
+  background:linear-gradient(90deg,var(--accent),#60a5fa);
+  color:white;padding:8px 12px;border-radius:999px;display:inline-block;font-size:13px;text-align:center;
+}
+
+/* Cards */
+.card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:18px}
+.card{
+  background:var(--card);padding:16px;border-radius:14px;box-shadow:var(--shadow)
+}
+.lesson-card .title{font-weight:700;margin:0}
+
+/* Lesson detail */
+.lesson-detail{margin-top:14px}
+.hidden{display:none}
+.back-link{background:transparent;border:none;color:var(--accent);cursor:pointer;margin-bottom:8px}
+
+/* Vocab */
+.vocab-controls{display:flex;gap:8px;align-items:center;margin-top:10px}
+#vocab-search{flex:1;padding:10px;border-radius:10px;border:1px solid rgba(15,23,42,0.06)}
+.vocab-list{list-style:none;padding:0;margin-top:12px;display:grid;gap:8px}
+.vocab-list li{display:flex;align-items:center;justify-content:space-between;padding:12px;border-radius:10px;background:var(--card);box-shadow:var(--shadow)}
+
+/* Modal */
+.modal{
+  position:fixed;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:rgba(10,10,10,0.35);
+  z-index:100;
+}
+
+.modal.hidden{
+  display:none;
+}
+
+.modal-content{
+  background:var(--card);
+  padding:18px;
+  border-radius:12px;
+  min-width:280px;
+  box-shadow:var(--shadow);
+  max-height:90vh;
+  overflow-y:auto;
+}
+
+/* Page head */
+.page-head{display:flex;flex-direction:column;gap:6px;margin-top:6px}
+.muted{color:var(--muted)}
+.small{font-size:13px}
+
+/* Footer */
+.site-footer{padding:18px 0;border-top:1px solid rgba(15,23,42,0.04);margin-top:28px;text-align:center;color:var(--muted);font-size:14px}
+
+/* Responsive tweaks */
+@media (max-width:720px){
+  .header-inner{flex-direction:column;align-items:flex-start;gap:12px}
+  .main-nav{flex-wrap:wrap}
+}
